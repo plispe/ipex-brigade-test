@@ -2,14 +2,6 @@ const { events, Job } = require("brigadier")
 const dbImage = 'petrpliska/db-dump:0.0.9'
 const dbPrefix = 'VPC-2355_'
 
-events.on('exec', (e, p) => {
-  console.log(e, p)
-})
-
-events.on('test', (e, p) => {
-  console.log(e, p)
-})
-
 events.on('create-mysql-dbs', () => {
   const createDBs = new Job('create-mysql-dbs', dbImage)
 
