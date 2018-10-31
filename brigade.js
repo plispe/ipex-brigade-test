@@ -6,7 +6,7 @@ events.on('exec', (e, p) => {
   console.log(e, p)
 })
 
-events.on('exec', (e, p) => {
+events.on('test', (e, p) => {
   console.log(e, p)
 })
 
