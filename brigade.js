@@ -6,6 +6,10 @@ events.on('exec', (e, p) => {
   console.log(e, p)
 })
 
+events.on('exec', (e, p) => {
+  console.log(e, p)
+})
+
 // events.on('create-dbs', () => {
 //   const createDBs = new Job('Import mysql databases', dbImage)
 
