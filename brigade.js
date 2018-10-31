@@ -11,7 +11,7 @@ events.on('test', (e, p) => {
 })
 
 events.on('create-mysql-dbs', () => {
-  const createDBs = new Job('create-mysql-db', dbImage)
+  const createDBs = new Job('create-mysql-dbs', dbImage)
 
   createDBs.env['MYSQL_PASSWORD'] = 'NldvYfFTTH'
   createDBs.env['DB_PREFIX'] = dbPrefix
