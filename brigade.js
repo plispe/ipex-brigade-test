@@ -10,19 +10,19 @@ events.on('test', (e, p) => {
   console.log(e, p)
 })
 
-// events.on('create-dbs', () => {
-//   const createDBs = new Job('Import mysql databases', dbImage)
+events.on('create-dbs', () => {
+  const createDBs = new Job('Import mysql databases', dbImage)
 
-//   createDBs.env['MYSQL_PASSWORD'] = 'NldvYfFTTH'
-//   createDBs.env['DB_PREFIX'] = dbPrefix
-//   createDBs.run()
+  createDBs.env['MYSQL_PASSWORD'] = 'NldvYfFTTH'
+  createDBs.env['DB_PREFIX'] = dbPrefix
+  createDBs.run()
 
-// })
+})
 
-// events.on('drop-dbs', () => {
-//   const dropDBs = new Job('Drop mysql databases', dbImage)
-//   dropDBs.tasks = ['./remove_databases.sh']
-//   dropDBs.env['MYSQL_PASSWORD'] = 'NldvYfFTTH'
-//   dropDBs.env['DB_PREFIX'] = dbPrefix
-//   dropDBs.run()
-// })
+events.on('drop-dbs', () => {
+  const dropDBs = new Job('Drop mysql databases', dbImage)
+  dropDBs.tasks = ['./remove_databases.sh']
+  dropDBs.env['MYSQL_PASSWORD'] = 'NldvYfFTTH'
+  dropDBs.env['DB_PREFIX'] = dbPrefix
+  dropDBs.run()
+})
