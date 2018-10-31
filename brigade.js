@@ -1,5 +1,8 @@
-const { events } = require("brigadier")
+const { events, Job } = require("brigadier")
 
 events.on("exec", (brigadeEvent, project) => {
-  console.log("Hello world!")
+  const importDb = new Job('import-db', 'petrpliska/db-dump:0.0.5')
+
+  importDb.env['MYSQL_PASSWORD'] = 'NldvYfFTTH'
+  importDb.run()
 })
