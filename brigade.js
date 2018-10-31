@@ -1,7 +1,7 @@
 const { events, Job } = require("brigadier")
 
 events.on("exec", (brigadeEvent, project) => {
-  const dbImage = 'petrpliska/db-dump:0.0.7'
+  const dbImage = 'petrpliska/db-dump:0.0.9'
   const dbPrefix = 'VPC-2355_'
   const importDb = new Job('import-db', dbImage)
 
