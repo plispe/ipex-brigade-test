@@ -1,17 +1,20 @@
 const { events, Job } = require("brigadier")
+const dbImage = 'petrpliska/db-dump:0.0.9'
+const dbPrefix = 'VPC-2355_'
 
-events.on("exec", (brigadeEvent, project) => {
-  const dbImage = 'petrpliska/db-dump:0.0.9'
-  const dbPrefix = 'VPC-2355_'
-  const importDb = new Job('import-db', dbImage)
+events.on('create-dbs', () => {
+  const createDBs = new Job('Import mysql databases', dbImage)
 
-  // importDb.env['MYSQL_PASSWORD'] = 'NldvYfFTTH'
-  // importDb.env['DB_PREFIX'] = dbPrefix
-  // importDb.run()
+  createDBs.env['MYSQL_PASSWORD'] = 'NldvYfFTTH'
+  createDBs.env['DB_PREFIX'] = dbPrefix
+  createDBs.run()
 
-  const removeDBs = new Job('remove-dbs', dbImage)
-  removeDBs.tasks = ['./remove_databases.sh']
-  removeDBs.env['MYSQL_PASSWORD'] = 'NldvYfFTTH'
-  removeDBs.env['DB_PREFIX'] = dbPrefix
-  removeDBs.run()
+})
+
+events.on('drop-dbs', () => {
+  const dropDBs = new Job('Drop mysql databases', dbImage)
+  dropDBs.tasks = ['./remove_databases.sh']
+  dropDBs.env['MYSQL_PASSWORD'] = 'NldvYfFTTH'
+  dropDBs.env['DB_PREFIX'] = dbPrefix
+  dropDBs.run()
 })
