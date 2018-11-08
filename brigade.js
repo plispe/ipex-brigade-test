@@ -4,8 +4,8 @@ const dbPrefix = 'VPC-2355_'
 
 events.on('create-mysql-dbs', () => {
   const createDBs = new Job('create-mysql-dbs', dbImage)
-
-  createDBs.env['MYSQL_PASSWORD'] = 'NldvYfFTTH'
+  const mysqlPassword = '9veXKCmSI0'
+  createDBs.env['MYSQL_PASSWORD'] = mysqlPassword
   createDBs.env['DB_PREFIX'] = dbPrefix
   createDBs.run()
 
@@ -14,7 +14,7 @@ events.on('create-mysql-dbs', () => {
 events.on('drop-mysql-dbs', () => {
   const dropDBs = new Job('drop-mysql-dbs', dbImage)
   dropDBs.tasks = ['./remove_databases.sh']
-  dropDBs.env['MYSQL_PASSWORD'] = 'NldvYfFTTH'
+  dropDBs.env['MYSQL_PASSWORD'] = mysqlPassword
   dropDBs.env['DB_PREFIX'] = dbPrefix
   dropDBs.run()
 })
